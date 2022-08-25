@@ -1,0 +1,18 @@
+Frontend :-
+	
+	instruction - use same versions mention in commands to run web app frontend successfylly
+	
+	1. npm i @angular/cli@7.3.10
+	
+	2. nvm install v16.13.2
+	
+	3. npm install --save-dev @anular -devkit/build--angular --allow-dirty --force
+
+
+Backend :-
+
+	1. mvn clean install
+
+	2. mvn help:effective-pom
+
+	3. mvn spring-boot:run

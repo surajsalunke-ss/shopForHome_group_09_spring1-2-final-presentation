@@ -1,0 +1,10 @@
+ProductId,ProductName,Price,Stock,Description,ProductIcon,CategoryType
+SDR04,Corner Hanging Shelf,10000,25,used for keeping things,https://m.media-amazon.com/images/I/81GXf1PlysL._AC_UL480_FMwebp_QL65_.jpg,0
+SDR05,Leather Bean Bag Filled With Beans,1899,9,It makes comfortable to sit,https://m.media-amazon.com/images/I/61CiyGIeoOL._AC_UL480_FMwebp_QL65_.jpg,0
+CDR01,Wadrobe,16660,20,A Wadrobe which is used for organising clothes,https://m.media-amazon.com/images/I/81Z7O5OXSBL._SX522_.jpg,1
+CDR02,Box Bed,26443,50,Feel Free to sleep,https://m.media-amazon.com/images/I/81hx71UBTUL._AC_UL480_FMwebp_QL65_.jpg,1
+DDR03,3Seater sofa cum bed,10849,24,It makes comfortable to sit,https://m.media-amazon.com/images/I/713VTIhCfOL._AC_UL480_QL65_.jpg,2
+CDR03,Wood Dinning Table set,19999,20, It is used to sit while eating food ,https://m.media-amazon.com/images/I/61E50LozgzL._SL1078_.jpg,2
+DDR04,Study Desk,4549,25,It makes comfortable to sit,https://m.media-amazon.com/images/I/81OO9-uuAsL._AC_UL480_FMwebp_QL65_.jpg,3
+CDR05,Black Mesh Office Chair,10999,40,It makes comfortable to sit,https://m.media-amazon.com/images/I/91ZFts+UQRL._AC_UL480_FMwebp_QL65_.jpg,3
+DDR06,Multimedia Speaker System,7422,26,Sounds good!,https://m.media-amazon.com/images/I/71qrVsOSaxL._AC_UL480_FMwebp_QL65_.jpg,4

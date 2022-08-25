@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>SHOP FOR HOME</title>
+
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <meta content="description" name="description">
+  <meta content="keywords" name="keywords">
+  <meta content="keenthemes" name="author">
+
+  <meta property="og:site_name" content="-CUSTOMER VALUE-">
+  <meta property="og:title" content="-CUSTOMER VALUE-">
+  <meta property="og:description" content="-CUSTOMER VALUE-">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="-CUSTOMER VALUE-"><!-- link to image for socio -->
+  <meta property="og:url" content="-CUSTOMER VALUE-">
+
+  <link rel="shortcut icon" href="favicon.ico">
+
+  <!-- Fonts START -->
+  <link
+    href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|PT+Sans+Narrow|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all"
+    rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all"
+    rel="stylesheet" type="text/css">
+  <!--- fonts for slider on the index page -->
+  <!-- Fonts END -->
+
+  <!-- Global styles START -->
+  <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Global styles END -->
+
+  <!-- Page level plugin styles START -->
+  <link href="assets/pages/css/animate.css" rel="stylesheet">
+  <link href="assets/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
+  <link href="assets/plugins/owl.carousel/assets/owl.carousel.css" rel="stylesheet">
+  <!-- Page level plugin styles END -->
+
+  <!-- Theme styles START -->
+  <link href="assets/pages/css/components.css" rel="stylesheet">
+  <link href="assets/pages/css/slider.css" rel="stylesheet">
+  <link href="assets/pages/css/style-shop.css" rel="stylesheet" type="text/css">
+  <link href="assets/corporate/css/style.css" rel="stylesheet">
+  <link href="assets/corporate/css/style-responsive.css" rel="stylesheet">
+  <link href="assets/corporate/css/themes/red.css" rel="stylesheet" id="style-color">
+  <link href="assets/corporate/css/custom.css" rel="stylesheet">
+  <!-- Theme styles END -->
+</head>
+<!-- Head END -->
+
+<!-- Body BEGIN -->
+
+<body style="background-color:#FFFBE9;">
+
+  <!-- BEGIN TOP BAR -->
+  <div class="pre-header border border-light" style="background-color: #89CFF0; margin-top: 10px;">
+    <div>
+      <div class="row">
+        <!-- BEGIN TOP BAR LEFT PART -->
+        <div class="col-md-6 col-sm-6 additional-shop-info">
+          <ul class="list-unstyled list-inline">
+            <a class="site-logo" style="padding-left: 10px; padding-top: 5px; color: black;"
+              routerLink="/product"><b>SHOP FOR HOME</b></a>
+          </ul>
+        </div>
+        <!-- END TOP BAR LEFT PART -->
+        <!-- BEGIN TOP BAR MENU -->
+        <div class="col-md-6 col-sm-6 additional-nav">
+          <ul class="list-unstyled list-inline pull-right">
+
+            <!-- *ngIf="currentUser; else noUser" -->
+            <li>
+              <a *ngIf="currentUser && currentUser.role != Role.Manager" class="nav-item nav-link " routerLink="/cart"
+                style="color: black;">
+                <b>Cart</b>
+              </a>
+            </li>
+
+            <li>
+              <a *ngIf="currentUser && currentUser.role == Role.Customer" class="nav-item nav-link"
+                routerLink="/wishlist" style="color: black;">
+                <b>Wishlist</b>
+              </a>
+            </li>
+
+            <ng-container>
+
+              <div class="navbar-nav" *ngIf="currentUser && currentUser.role == Role.Manager">
+                <a class="nav-item nav-link" style="color: black;" routerLink="/discount">
+                  &nbsp;<b>Discount</b>&nbsp;&nbsp;
+                </a>
+              </div>
+
+              <div class="navbar-nav" *ngIf="currentUser && currentUser.role == Role.Manager">
+                <a class="nav-item nav-link" style="color: black;" (click)=getUsers() routerLink="/admin/user">
+                  &nbsp;&nbsp;<b>Users</b>&nbsp;&nbsp;
+                </a>
+              </div>
+
+              <div class="navbar-nav" *ngIf="currentUser && currentUser.role == Role.Manager">
+                <a class="nav-item nav-link" style="color: black;" routerLink="/seller/product">
+                  &nbsp;<b>Stocks</b>&nbsp;&nbsp;
+                </a>
+              </div>
+
+              <div class="navbar-nav" *ngIf="currentUser && currentUser.role == Role.Manager">
+                <a class="nav-item nav-link" style="color: black;" routerLink="/sales">
+                  &nbsp;<b>Sales</b>&nbsp;&nbsp;
+                </a>
+              </div>
+
+            </ng-container>
+
+            <ng-container *ngIf="currentUser; else noUser">
+
+
+
+              <li>
+                <a class="nav-item nav-link " routerLink="/order">
+                  <i class="fas fa-list-ul" style="color: black;"></i>
+                  <b style="color: black;">Orders</b>
+                </a>
+              </li>
+
+              <li>
+                <a class="nav-item nav-link " style="color: black;" routerLink="/profile">
+                  <b>{{name}}</b>
+                </a>
+              </li>
+
+              <li>
+                <a class="nav-item nav-link " style="color: black;" (click)="logout()" routerLink="/login"
+                  [queryParams]="{logout: true}">
+                  <b>Sign Out</b>
+                </a>
+              </li>
+
+            </ng-container>
+
+            <ng-template #noUser>
+
+              <li>
+                <a  class="nav-item nav-link " routerLink="/cart"
+                  style="color: black;">
+                  <b>Cart</b>
+                </a>
+              </li>
+
+              <li>
+                <a class="nav-item nav-link " style="color: black;" routerLink="/login">
+                  <b>Sign In</b>
+                </a>
+              </li>
+
+              <li>
+                <a class="nav-item nav-link " style="color: black;" routerLink="/register">
+                  <b>Sign Up</b>
+                </a>
+              </li>
+
+            </ng-template>
+
+
+          </ul>
+        </div>
+        <!-- END TOP BAR MENU -->
+      </div>
+    </div>
+  </div>
+  <!-- END TOP BAR -->
+
+  <style>
+    .site-logo {
+      font-size: 30px;
+      color: rgb(57, 5, 152);
+    }
+  </style>
+
+
+
+  <marquee scrollamount="20" loop="infinite" padding="5x" vspace="20" behavior="scroll" direction="left" width="100%"
+    style="background-color: #FFFBE9;">
+    <img
+      src="https://images.moneycontrol.com/static-mcnews/2022/01/Home-office-design-770x433.jpg?impolicy=website&width=400&height=225">
+    <img src="https://www.ikea.com/in/en/navigation/images/coffee-tables-10716.jpeg?imwidth=400">
+    <img src="https://www.ikea.com/global/assets/navigation/images/two-seat-sofas-10668.jpeg?imwidth=400">
+
+  </marquee>
+
+
+  <!-- BEGIN HEADER -->
+  <div class="header" style="background-color: #89CFF0;">
+    <div class="container">
+      <!-- <a class="site-logo" routerLink="/product"><b>SHOP FOR HOME</b></a> -->
+
+      <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
+
+
+      <!-- BEGIN NAVIGATION -->
+      <div class="header-navigation" style="background-color: #89CFF0;">
+
+        <ul>
+
+          <li class="dropdown">
+            <a *ngIf="!currentUser || currentUser.role == Role.Customer"
+              routerLink="/category/0"><b>Shop Living Room</b></a>
+          </li>
+
+          <li class="dropdown dropdown-megamenu">
+            <a *ngIf="!currentUser || currentUser.role == Role.Customer"
+              routerLink="/category/1"><b>Shop Bed Room</b></a>
+          </li>
+
+          <li class="dropdown dropdown-megamenu"><a *ngIf="!currentUser || currentUser.role == Role.Customer"
+              routerLink="/category/2"><b>Shop Dining Room</b></a>
+          </li>
+
+          <li class="dropdown dropdown-megamenu"><a *ngIf="!currentUser || currentUser.role == Role.Customer"
+              routerLink="/category/3"><b>Shop Study Room</b></a>
+          </li>
+
+          <li class="dropdown dropdown-megamenu"><a *ngIf="!currentUser || currentUser.role == Role.Customer"
+              routerLink="/category/4"><b>Home Electronics</b></a>
+          </li>
+
+        </ul>
+      </div>
+      <!-- END NAVIGATION -->
+    </div>
+  </div>
+  <!-- Header END -->
+
+</body>
+<!-- END BODY -->
+
+</html>
