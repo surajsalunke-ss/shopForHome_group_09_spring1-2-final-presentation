@@ -1,0 +1,4 @@
+1. delete all rows from product_info table and run following query
+2. run this sql command in users table of ecommerce db before trying to do bulk uplodation
+
+set foreign_key_check = 0;
