@@ -1,0 +1,51 @@
+# Project-local downloads, caches, and runtime state
+.tools/
+.local/
+.m2/
+target/
+node_modules/
+dist/
+*.class
+*.log
+*.pid
+*.pid.lock
+*.dumpstream
+
+# Embedded databases (never version local data)
+*.mv.db
+*.h2.db
+*.trace.db
+*.lock.db
+
+# Private configuration and credentials; retain reproducible templates
+/backend/src/main/resources/application.properties
+.env
+.env.*
+!.env.example
+!.env.template
+credentials/
+secrets/
+*credentials*.json
+*service-account*.json
+.gcloud/
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+
+# IDE and operating-system state
+.idea/
+.settings/
+.classpath
+.project
+.factorypath
+*.iml
+*.iws
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Maven Wrapper scripts/properties and checked-in local config are intentional.
+# Do not blanket-ignore .mvn or *.properties.
