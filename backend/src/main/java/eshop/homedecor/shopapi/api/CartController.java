@@ -41,7 +41,7 @@ public class CartController {
         try {
             cartService.mergeLocalCart(productInOrders, user);
         } catch (Exception e) {
-            ResponseEntity.badRequest().body("Merge Cart Failed");
+            throw new org.springframework.web.server.ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST, "Merge cart failed", e);
         }
         return ResponseEntity.ok(cartService.getCart(user));
     }

@@ -49,3 +49,8 @@ Desktop.ini
 
 # Maven Wrapper scripts/properties and checked-in local config are intentional.
 # Do not blanket-ignore .mvn or *.properties.
+
+# Frontend generated check output
+coverage/
+.angular/
+.npm/

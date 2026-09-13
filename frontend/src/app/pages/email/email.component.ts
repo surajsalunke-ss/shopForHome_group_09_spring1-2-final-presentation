@@ -29,7 +29,7 @@ export class EmailComponent implements OnInit {
 
   onSubmit(){
     console.log(this.dataset);
-    this.https.post<Details>('http://localhost:8080/sendMail', this.dataset)
+    this.https.post<Details>('/api/sendMail', this.dataset)
     .subscribe(
 
         data  => {

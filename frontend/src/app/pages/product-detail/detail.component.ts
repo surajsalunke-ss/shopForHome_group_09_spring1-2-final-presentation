@@ -27,6 +27,7 @@ export class DetailComponent implements OnInit {
   currentUser: JwtResponse;
   userSubscription: Subscription;
   alert:boolean=false;
+  error = "";
   Role = Role;
 
 
@@ -73,16 +74,11 @@ export class DetailComponent implements OnInit {
         .addItem(new ProductInOrder(this.productInfo, this.count))
         .subscribe(
             _ => {
-              this.alert=true;
+              if (_) { this.alert=true; this.error=""; }
+              else { this.error="Unable to add this quantity. Check the available stock."; }
               console.log("added");
               },
-            res => {
-              if (!res) {
-                console.log('Add Cart failed' + res);
-                throw new Error();
-              }
-              this.router.navigateByUrl('/cart');
-            },
+            () => { this.alert = false; this.error = 'Could not add this product. Check stock and try again.'; },
             // _ => console.log('Add Cart Failed')
         );
   }

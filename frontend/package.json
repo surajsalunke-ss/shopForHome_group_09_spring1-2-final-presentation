@@ -7,7 +7,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "start:local": "ng serve --host 127.0.0.1 --port 4200 --proxy-config proxy.local.json"
   },
   "private": true,
   "dependencies": {
@@ -20,7 +21,6 @@
     "@angular/platform-browser": "~7.1.0",
     "@angular/platform-browser-dynamic": "~7.1.0",
     "@angular/router": "~7.1.0",
-    "angular-file-uploader": "^7.1.1",
     "bootstrap": "^4.0.0",
     "core-js": "^2.5.4",
     "file-saver": "^2.0.5",
@@ -54,5 +54,9 @@
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
     "typescript": "~3.1.6"
+  },
+  "engines": {
+    "node": "10.24.1",
+    "npm": "6.14.12"
   }
 }

@@ -22,7 +22,7 @@ import {UserDetailComponent} from './pages/user-edit/user-detail.component';
 import {ProductEditComponent} from './pages/product-edit/product-edit.component';
 import { WishListComponent } from './pages/wish-list/wish-list.component';
 import {ExcelService} from './services/ExcelService'
-import { AngularFileUploaderModule } from "angular-file-uploader";
+// The CSV page uses its own native file input; no uploader module is required.
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { MailComponent } from './mail/mail.component';
 import { EmailComponent } from './pages/email/email.component';
@@ -61,7 +61,7 @@ import { SalesComponent } from './pages/sales/sales.component';
         AppRoutingModule,
         FormsModule,
         HttpClientModule,
-        AngularFileUploaderModule,
+
         Ng2SearchPipeModule
 
     ],

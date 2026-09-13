@@ -17,10 +17,16 @@ public class ProductInOrderServiceImpl implements ProductInOrderService {
 
     @Autowired
     ProductInOrderRepository productInOrderRepository;
+    @Autowired
+    eshop.homedecor.shopapi.service.ProductService productService;
 
     @Override
     @Transactional
     public void update(String itemId, Integer quantity, User user) {
+        var product = productService.findOne(itemId);
+        if (product == null || quantity == null || quantity < 1 || quantity > product.getProductStock()) {
+            throw new org.springframework.web.server.ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST, "Invalid quantity");
+        }
         var op = user.getCart().getProducts().stream().filter(e -> itemId.equals(e.getProductId())).findFirst();
         op.ifPresent(productInOrder -> {
             productInOrder.setCount(quantity);

@@ -2,7 +2,8 @@ param(
     [ValidateSet('Build', 'Start', 'Stop', 'Status')]
     [string]$Action = 'Start',
     [ValidateRange(1024, 65535)]
-    [int]$Port = 8080
+    [int]$Port = 8080,
+    [switch]$Demo
 )
 $ErrorActionPreference = 'Stop'
 $repoPath = Split-Path -Parent $PSScriptRoot
@@ -79,7 +80,8 @@ try {
             $process = Start-Process -FilePath $javaPath -ArgumentList @(
                 '-Dspring.devtools.restart.enabled=false', '-jar', ('"' + $jarPath + '"'),
                 ('"--spring.config.location=' + $configUri + '"'), '--spring.profiles.active=local',
-                '--server.address=127.0.0.1', "--server.port=$Port"
+                '--server.address=127.0.0.1', "--server.port=$Port",
+                ("--shop.demo.enabled=" + $Demo.IsPresent.ToString().ToLowerInvariant())
             ) -WorkingDirectory $PSScriptRoot -WindowStyle Hidden -PassThru `
               -RedirectStandardOutput (Join-Path $localPath 'backend.stdout.log') `
               -RedirectStandardError (Join-Path $localPath 'backend.stderr.log')

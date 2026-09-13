@@ -12,9 +12,10 @@ import {Router} from "@angular/router";
 export class SignupComponent implements OnInit {
 
   mobNumberPattern = "^((\\+91-?)|0)?[0-9]{10}$";
-  EmailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
+  EmailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$";
   NamePattern = "[a-zA-Z][a-zA-Z ]*";
   user: User;
+  error = "";
 
   constructor( private location: Location,
                private userService: UserService,
@@ -33,7 +34,7 @@ export class SignupComponent implements OnInit {
     this.userService.signUp(this.user).subscribe(u => {
       this.router.navigate(['/login']);
     },
-        e => {});
+        e => { this.error = "Registration failed. Check the fields or use a different email address."; });
   }
 
 }

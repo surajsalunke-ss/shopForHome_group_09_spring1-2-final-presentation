@@ -104,7 +104,7 @@ export class ProductService {
 
 
     upload(file):any {
-        const UPLOAD_URL ="http://localhost:8080/csv/upload";
+        const UPLOAD_URL ="/api/csv/upload";
         const headers = this.getHeaders();
         // Create form data
         const formData = new FormData();
@@ -124,13 +124,13 @@ export class ProductService {
           }
         };
 
-        xhr.open('POST', 'http://localhost:8080/csv/upload', true);
+        xhr.open('POST', '/api/csv/upload', true);
         xhr.send(formData);
         return xhr;
 
         // Make http post request over api
         // with formData as req
-       /**  return this.http.post("http://localhost:8080/api/csv/upload", formData,{
+       /**  return this.http.post("/api/api/csv/upload", formData,{
             headers: {
               'Content-Type': 'multipart/form-data'
               //'Content-Type': 'text/csv'

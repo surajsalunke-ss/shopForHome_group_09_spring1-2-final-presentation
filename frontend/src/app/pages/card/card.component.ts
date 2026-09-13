@@ -15,6 +15,7 @@ import { CartService } from 'src/app/services/cart.service';
   styleUrls: ['./card.component.css']
 })
 export class CardComponent implements OnInit, OnDestroy {
+    searchText = '';
 
 
   title: string;
