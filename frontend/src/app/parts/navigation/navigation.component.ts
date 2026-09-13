@@ -34,6 +34,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
         this.name$ = this.userService.name$.subscribe(aName => this.name = aName);
         this.currentUserSubscription = this.userService.currentUser.subscribe(user => {
             this.currentUser = user;
+            this.name = user ? user.name : '';
             if (!user || user.role == Role.Customer) {
                 this.root = '/';
             } else {
@@ -44,7 +45,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
 
     ngOnDestroy(): void {
         this.currentUserSubscription.unsubscribe();
-        // this.name$.unsubscribe();
+        this.name$.unsubscribe();
     }
 
     logout() {

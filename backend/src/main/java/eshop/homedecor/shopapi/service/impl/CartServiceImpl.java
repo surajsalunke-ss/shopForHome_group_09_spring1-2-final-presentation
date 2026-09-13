@@ -47,14 +47,22 @@ public class CartServiceImpl implements CartService {
     public void mergeLocalCart(Collection<ProductInOrder> productInOrders, User user) {
         Cart finalCart = user.getCart();
         productInOrders.forEach(productInOrder -> {
+            var currentProduct = productService.findOne(productInOrder.getProductId());
+            if (currentProduct == null || productInOrder.getCount() == null || productInOrder.getCount() < 1) {
+                throw new org.springframework.web.server.ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST, "Invalid product or quantity");
+            }
             Set<ProductInOrder> set = finalCart.getProducts();
             Optional<ProductInOrder> old = set.stream().filter(e -> e.getProductId().equals(productInOrder.getProductId())).findFirst();
+            int requested = productInOrder.getCount() + (old.isPresent() ? old.get().getCount() : 0);
+            if (requested > currentProduct.getProductStock()) {
+                throw new org.springframework.web.server.ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST, "Quantity exceeds stock");
+            }
             ProductInOrder prod;
             if (old.isPresent()) {
                 prod = old.get();
                 prod.setCount(productInOrder.getCount() + prod.getCount());
             } else {
-                prod = productInOrder;
+                prod = new ProductInOrder(currentProduct, productInOrder.getCount());
                 prod.setCart(finalCart);
                 finalCart.getProducts().add(prod);
             }
@@ -79,7 +87,10 @@ public class CartServiceImpl implements CartService {
     @Override
     @Transactional
     public void checkout(User user) {
-        // Creat an order
+        if (user.getCart().getProducts().isEmpty()) {
+            throw new org.springframework.web.server.ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST, "Cart is empty");
+        }
+        // Create an order
         OrderMain order = new OrderMain(user);
         orderRepository.save(order);
 

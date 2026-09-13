@@ -58,7 +58,9 @@ The launcher binds to `127.0.0.1` and explicitly loads only `backend/config/loca
 
 Hibernate creates and updates the embedded H2 schema in `.local/database/shopforhome.mv.db`. The database persists across restarts. Tests use separate in-memory H2 databases and do not alter local development data. The H2 console is disabled.
 
-**The initial catalog is empty.** A new checkout returns HTTP 200 from `/product` with an empty `content` array and `totalElements: 0`. No accounts, products, MySQL data, or local smoke-test credentials are shipped. Integration-test records are temporary fixtures.
+For the opt-in frontend demo (`Start -Demo`), see [LOCAL-FRONTEND.md](LOCAL-FRONTEND.md). Plain `Start` never seeds data; it does not delete previously seeded data.
+
+**The initial catalog is empty.** A new checkout returns HTTP 200 from `/product` with an empty `content` array and `totalElements: 0`. Without the opt-in demo, no accounts or products are seeded. MySQL data is not shipped. Integration-test records are temporary fixtures.
 
 The local mail sender rejects both simple and MIME delivery before opening an SMTP connection. The existing `/sendMail` endpoint reports `Error while Sending Mail` in this mode; that is expected. No mail is delivered.
 

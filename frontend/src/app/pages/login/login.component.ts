@@ -29,7 +29,8 @@ export class LoginComponent implements OnInit {
     ngOnInit() {
         let params = this.route.snapshot.queryParamMap;
         this.isLogout = params.has('logout');
-        this.returnUrl = params.get('returnUrl');
+        const requested = params.get('returnUrl');
+        this.returnUrl = requested && requested.startsWith('/') && !requested.startsWith('//') ? requested : '/product';
     }
 
     onSubmit() {

@@ -20,6 +20,7 @@ import { Router } from '@angular/router';
     styleUrls: ['./product.list.component.css']
 })
 export class ProductListComponent implements OnInit, OnDestroy {
+    searchText = '';
 
     constructor(private userService: UserService,
                 private productService: ProductService,
@@ -89,7 +90,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
     afuConfig = {
         uploadAPI: {
-          url: "http://localhost:8080/csv/upload"
+          url: "/api/csv/upload"
         }
     };
 

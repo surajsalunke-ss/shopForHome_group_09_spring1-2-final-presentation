@@ -12,6 +12,7 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./discount.component.css']
 })
 export class DiscountComponent implements OnInit,OnDestroy {
+    searchText = '';
 
   constructor(private route:ActivatedRoute,
     private orderService : OrderService,

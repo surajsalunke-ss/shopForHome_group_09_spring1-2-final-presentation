@@ -13,6 +13,7 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./adminuser.component.css']
 })
 export class AdminuserComponent implements OnInit,OnDestroy {
+    searchText = '';
 
   constructor(private userService:UserService,
     private route: ActivatedRoute,

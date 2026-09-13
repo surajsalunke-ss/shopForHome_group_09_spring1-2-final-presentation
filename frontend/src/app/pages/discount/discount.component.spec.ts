@@ -1,3 +1,6 @@
+import { AppModule } from '../../app.module';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DiscountComponent } from './discount.component';
@@ -8,7 +11,7 @@ describe('DiscountComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DiscountComponent ]
+      imports: [AppModule, HttpClientTestingModule, RouterTestingModule]
     })
     .compileComponents();
   }));
